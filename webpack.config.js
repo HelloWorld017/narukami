@@ -2,6 +2,26 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const cssLoaders = [
+	{
+		loader: 'css-loader',
+		options: {
+			importLoaders: 1
+		}
+	},
+	'postcss-loader'
+];
+
+const cssExtract = ExtractTextPlugin.extract({
+	use: cssLoaders,
+	fallback: 'vue-style-loader'
+});
+
+const lessExtract = ExtractTextPlugin.extract({
+	use: cssLoaders.concat('less-loader'),
+	fallback: 'vue-style-loader'
+});
+
 module.exports = {
 	entry: path.resolve(__dirname, 'src', 'index.js'),
 
@@ -18,14 +38,8 @@ module.exports = {
 				loader: 'vue-loader',
 				options: {
 					loaders: {
-						'less': ExtractTextPlugin.extract({
-							use: [
-								'css-loader',
-								'less-loader'
-							],
-							fallback: 'vue-style-loader'
-						}),
-
+						'less': lessExtract,
+						'css': cssExtract,
 						'js': 'babel-loader?presets[]=latest'
 					}
 				}
@@ -40,20 +54,11 @@ module.exports = {
 			},
 			{
 				test: /\.less$/,
-				loader: ExtractTextPlugin.extract({
-					use: [
-						'css-loader',
-						'less-loader'
-					],
-					fallback: 'vue-style-loader'
-				})
+				loader: lessExtract
 			},
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract({
-					use: 'css-loader',
-					fallback: 'vue-style-loader'
-				})
+				loader: cssExtract
 			},
 			{
 				test: /\.(png|jpg|gif|svg|ttf|woff|woff2|eot)$/,

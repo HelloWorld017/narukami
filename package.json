@@ -1,10 +1,10 @@
 {
-  "name": "origami",
-  "description": "Origami: a fancy ghost theme",
+  "name": "narukami",
+  "description": "Narukami: a charm ghost theme",
   "demo": "https://blog.khinenw.tk",
   "version": "2.0.1-beta",
   "engines": {
-    "ghost": ">=0.9.0 <1.0.0"
+    "ghost": ">=1.0.0"
   },
   "scripts": {
     "dev": "webpack --watch",
@@ -28,10 +28,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/if-Team/origami.git"
+    "url": "https://github.com/HelloWorld017/narukami.git"
   },
-  "bugs": "https://github.com/if-Team/origami/issues",
-  "contributors": "https://github.com/if-Team/origami/graphs/contributors",
+  "bugs": "https://github.com/HelloWorld017/narukami/issues",
+  "contributors": "https://github.com/HelloWorld017/narukami/graphs/contributors",
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
@@ -41,6 +41,11 @@
     "file-loader": "^0.10.0",
     "less": "^2.7.2",
     "less-loader": "^2.2.3",
+    "postcss-browser-reporter": "^0.5.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-loader": "^2.0.10",
+    "postcss-reporter": "^5.0.0",
+    "postcss-url": "^7.3.0",
     "vue-loader": "^10.3.0",
     "vue-template-compiler": "^2.1.10",
     "webpack": "^2.2.1",

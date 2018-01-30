@@ -1,6 +1,5 @@
 /* Big cover image on the home page */
 .main-header {
-	//position: absolute;
 	position: relative;
 	display: table;
 	width: 100%;
@@ -15,26 +14,6 @@
 .main-header .inner {
 	width: 80%;
 }
-
-/*.content {
-	width: ~"calc(80vw - 360px)";
-	max-width: 710px;
-	margin: 0 auto;
-	position: relative;
-	top: 100px;
-	min-height: ~"calc(100vh - 100px)";
-	padding-top: 10rem;
-	background: @background;
-	color: #fff;
-}
-
-.content a {
-	color: #fff;
-}
-
-.content a:hover {
-	color: @foreground;
-}*/
 
 .content {
 	padding: 0 5rem;
@@ -134,11 +113,11 @@
 	text-overflow: ellipsis;
 }
 
-.nav .nav-current:before {
+.nav .nav-current::before {
 	color: #fff;
 }
 
-.nav .nav-current a:after {
+.nav .nav-current a::after {
 	content: " ";
 	border-bottom: rgba(255,255,255,0.5) 1px solid;
 	width: 100%;
@@ -160,7 +139,7 @@
 	border-radius: 3px;
 	transition: all .5s ease;
 
-	&:before {
+	&::before {
 		font-size: 12px;
 		font-weight: bold;
 		margin-right: 6px;
@@ -208,8 +187,6 @@
 }
 
 .subscribe-button {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: block;
 	position: absolute;
@@ -250,8 +227,6 @@
 }
 
 .blog-logo img {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	display: block;
 	height: 38px;
@@ -309,36 +284,26 @@
 
 /* Add subtle load-in animation for content on the home page */
 .home-template .page-title {
-	-webkit-animation: fade-in-down 0.6s;
 	animation: fade-in-down 0.6s both;
-	-webkit-animation-delay: 0.2s;
 	animation-delay: 0.2s;
 }
 .home-template .page-description {
-	-webkit-animation: fade-in-down 0.9s;
 	animation: fade-in-down 0.9s both;
-	-webkit-animation-delay: 0.1s;
 	animation-delay: 0.1s;
 }
 
 .post-list {
 	width: 100%;
 	display: flex;
-	display: -webkit-flex;
-	display: flexbox;
 
 	justify-content: space-between;
-	-webkit-justify-content: space-between;
 }
 
 .post-column {
 	width: ~"calc(50% - 10px)";
 	display: flex;
-	display: -webkit-flex;
-	display: flexbox;
 
 	flex-direction: column;
-	-webkit-flex-direction: column;
 }
 
 .full-column {
@@ -358,11 +323,6 @@
 	transform-style: preserve-3d;
 	transform-origin: 0% 0%;
 	transform: rotateX(-90deg);
-
-	-webkit-animation-fill-mode: forwards;
-	-webkit-transform-style: preserve-3d;
-	-webkit-transform-origin: 0% 0%;
-	-webkit-transform: rotateX(-90deg);
 }
 
 #clip-notifier {
@@ -408,9 +368,6 @@
 			visibility: hidden;
 			opacity: 0;
 			transition: opacity .4s;
-			-o-transition: opacity .4s;
-			-moz-transition: opacity .4s;
-			-webkit-transition: opacity .4s;
 		}
 
 		.post-image-indicator-shape {
@@ -423,20 +380,8 @@
 			transition:
 				width .4s cubic-bezier(0.25, 0.1, 0.4, 2.0),
 				height .4s cubic-bezier(0.25, 0.1, 0.4, 2.0);
-			-o-transition:
-				width .4s cubic-bezier(0.25, 0.1, 0.4, 2.0),
-				height .4s cubic-bezier(0.25, 0.1, 0.4, 2.0);
-			-moz-transition:
-				width .4s cubic-bezier(0.25, 0.1, 0.4, 2.0),
-				height .4s cubic-bezier(0.25, 0.1, 0.4, 2.0);
-			-webkit-transition:
-				width .4s cubic-bezier(0.25, 0.1, 0.4, 2.0),
-				height .4s cubic-bezier(0.25, 0.1, 0.4, 2.0);
 
 			transform: translate(-50%, -50%) rotate(45deg);
-			-o-transform: translate(-50%, -50%) rotate(45deg);
-			-moz-transform: translate(-50%, -50%) rotate(45deg);
-			-webkit-transform: translate(-50%, -50%) rotate(45deg);
 		}
 
 		position: absolute;
@@ -453,9 +398,6 @@
 		text-align: center;
 
 		transition: left .5s;
-		-o-transition: left .5s;
-		-moz-transition: left .5s;
-		-webkit-transition: left .5s;
 
 		a {
 			text-decoration: none;
@@ -523,9 +465,6 @@
 		.blur(0);
 
 		transition: filter .5s;
-		-o-transition: -o-filter .5s;
-		-moz-transition: -moz-filter .5s;
-		-webkit-transition: -webkit-filter .5s;
 
 		will-change: filter;
 	}
@@ -546,7 +485,7 @@
 		top: 0;
 		right: 0;
 
-		&:before {
+		&::before {
 			content: '';
 			display: block;
 			border-top: 50px solid #303030;
@@ -606,9 +545,6 @@ body.page-template .post-title {
 	padding: 0 15px;
 	will-change: background, color, transform, border-color;
 	transition: background .5s, color .5s, transform .5s, border .5s;
-	-webkit-transition: background .5s, color .5s, -webkit-transform .5s, border .5s;
-	-moz-transition: background .5s, color .5s, -moz-transform .5s, border .5s;
-	-o-transition: background .5s, color .5s, -o-transform .5s, border .5s;
 
 	.skew(20deg);
 
