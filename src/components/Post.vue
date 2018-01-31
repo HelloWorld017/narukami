@@ -1,61 +1,24 @@
 <template>
 	<article class="grid-item post post-card">
-		<header class="post-header">
-			<h2 class="post-title"><a :href="url">{{title}}</a></h2>
-		</header>
-		<hr class="post-divider">
 		<template v-if="image">
 			<div :class="imageClass" @mouseover="mouseover" @mouseout="mouseout">
 				<div class="post-image-filter" :style="imageStyle"></div>
-				<div class="post-image-indicator">
-					<div class="post-image-indicator-shape"></div>
-					<div class="post-image-indicator-buttons">
-						<a class="mdi mdi-link force-link" :data-origami-link="url"></a>
-						<a class="mdi mdi-file-document" :href="url"></a>
+				<div class="post-content">
+					<header class="post-header">
+						<h2 class="post-title"><a :href="url">{{title}}</a></h2>
+					</header>
+					<div>
+						<time class="post-date" :datetime="datetime">{{datetext}}</time>
 					</div>
-				</div>
-				<div class="post-image-download">
-					<a class="mdi mdi-download" download target="_blank" :href="image">
-						download
-					</a>
-				</div>
-				<div class="post-image-original">
-					<a class="mdi mdi-image" target="_blank" :href="image">
-						original
-					</a>
-				</div>
-				<div class="mobile-image-tools">
-					<a class="mdi mdi-download" download target="_blank" :href="image"></a>
-					<a class="mdi mdi-image" target="_blank" :href="image"></a>
-					<a class="mdi mdi-link force-link" :data-origami-link="url"></a>
-					<a class="mdi mdi-file-document" :href="url"></a>
 				</div>
 			</div>
 		</template>
-		<section class="post-excerpt">
-			<p v-html="computedExcerpt"></p>
-		</section>
-		<a class="read-more" :href="url"></a>
-		<footer class="post-meta">
-			<div v-if="tags.length > 0" class="post-tags">
-				<div class="tags-indicator">
-					<span class="mdi mdi-label"></span>
-				</div>
-
-				<div class="post-tag tags-indicator-desktop">
-					<span class="mdi mdi-checkbox-blank-circle-outline"></span>
-				</div>
-				<tag v-for="tag in tags" :slug="tag.slug" :name="tag.name" :image="tag.image"></tag>
-			</div>
-
-			<author :author="author"></author>
-			<time class="post-date" :datetime="datetime">{{datetext}}</time>
-			<span class="comment-count" :data-disqus-url="url"></span>
-		</footer>
 	</article>
 </template>
 
 <script>
+	import fitvids from "fitvids";
+
 	import Author from "./Author.vue";
 	import Tag from "./Tag.vue";
 
@@ -145,6 +108,7 @@
 			this.$el.style.webkitAnimationDelay = this.index / 2 + "s";
 			this.$el.style.animationName = "flip";
 			this.$el.style.webkitAnimationName = "flip";
+			fitvids(".post-content");
 		},
 		methods: {
 			mouseover(){

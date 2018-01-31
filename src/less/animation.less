@@ -1,20 +1,7 @@
 /* Used to fade in title/desc on the home page */
-@-webkit-keyframes fade-in-down {
-	0% {
-		opacity: 0;
-		-webkit-transform: translateY(-10px);
-		transform: translateY(-10px);
-	}
-	100% {
-		opacity: 1;
-		-webkit-transform: translateY(0);
-		transform: translateY(0);
-	}
-}
 @keyframes fade-in-down {
 	0% {
 		opacity: 0;
-		-webkit-transform: translateY(-10px);
 		transform: translateY(-10px);
 	}
 	100% {
@@ -25,76 +12,31 @@
 }
 
 /* Used to bounce .scroll-down on home page */
-@-webkit-keyframes bounce {
-	0%, 10%, 25%, 40%, 50% {
-		-webkit-transform: translateY(0) rotate(-90deg);
-		transform: translateY(0) rotate(-90deg);
-	}
-	20% {
-		-webkit-transform: translateY(-10px) rotate(-90deg);
-		transform: translateY(-10px) rotate(-90deg);
-	}
-	30% {
-		-webkit-transform: translateY(-5px) rotate(-90deg);
-		transform: translateY(-5px) rotate(-90deg);
-	}
-}
+
 @keyframes bounce {
 	0%, 10%, 25%, 40%, 50% {
-		-webkit-transform: translateY(0) rotate(-90deg);
 		transform: translateY(0) rotate(-90deg);
 	}
 	20% {
-		-webkit-transform: translateY(-10px) rotate(-90deg);
 		transform: translateY(-10px) rotate(-90deg);
 	}
 	30% {
-		-webkit-transform: translateY(-5px) rotate(-90deg);
 		transform: translateY(-5px) rotate(-90deg);
 	}
 }
 
-
-@-webkit-keyframes flip {
-	0% {
-		-webkit-transform: rotateX(-90deg);
-		transform: rotateX(-90deg);
-		opacity: 0;
-	}
-	100% {
-		-webkit-transform: rotateX(0deg);
-		transform: rotateX(0deg);
-		opacity: 1;
-	}
-}
 @keyframes flip {
 	0% {
-		-webkit-transform: rotateX(-90deg);
-		transform: rotateX(-90deg);
+		transform: rotateX(-90deg) skewX(4deg);
 		opacity: 0;
 	}
 	100% {
-		-webkit-transform: rotateX(0deg);
-		transform: rotateX(0deg);
+		transform: rotateX(0deg) skewX(4deg);
 		opacity: 1;
 	}
 }
 
-@-webkit-keyframes notify {
-	0% {
-		visibility: visible;
-		opacity: 0;
-	}
 
-	10% {
-		opacity: 1;
-	}
-
-	100% {
-		visibility: hidden;
-		opacity: 0;
-	}
-}
 @keyframes notify {
 	0% {
 		visibility: visible;

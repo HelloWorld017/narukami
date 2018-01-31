@@ -11,7 +11,6 @@ import App from "./App.vue";
 
 //Libraries
 import Clipboard from "clipboard";
-
 window.Clipboard = Clipboard;
 
 import "./js/prism.js";

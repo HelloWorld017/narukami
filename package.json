@@ -2,7 +2,7 @@
   "name": "narukami",
   "description": "Narukami: a charm ghost theme",
   "demo": "https://blog.khinenw.tk",
-  "version": "2.0.1-beta",
+  "version": "2.0.2-beta",
   "engines": {
     "ghost": ">=1.0.0"
   },

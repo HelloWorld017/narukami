@@ -20,7 +20,7 @@
 	margin: 6px auto;
 	top: 80px;
 
-	&:before, &:after {
+	&::before, &::after {
 		content: '';
 		background: @background;
 		width: 62px;
@@ -30,18 +30,18 @@
 		transition: all .5s ease;
 	}
 
-	&:before {
+	&::before {
 		left: 0;
 		.skew(0deg, 20deg);
 	}
 
-	&:after {
+	&::after {
 		right: 0;
 		.skew(0deg, -20deg);
 	}
 
 	&:hover {
-		&:after, &:before {
+		&::after, &::before {
 			background: @foreground;
 		}
 	}

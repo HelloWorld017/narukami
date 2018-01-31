@@ -1,41 +1,7 @@
 <template>
 	<div>
 		<div class="post-list">
-			<div class="post-column" v-if="!tablet">
-				<template v-for="post in previousLeft">
-					<post
-						v-if="post"
-						:title="post.title"
-						:slug="post.slug"
-						:excerpt="post.excerpt"
-						:author="post.author"
-						:image="post.image"
-						:tags="post.tags"
-						:url="post.url"
-						:date="new Date(post.published_at)"
-						:index="post.index">
-					</post>
-				</template>
-			</div>
-
-			<div class="post-column" v-if="!tablet">
-				<template v-for="post in previousRight">
-					<post
-						v-if="post"
-						:title="post.title"
-						:slug="post.slug"
-						:excerpt="post.excerpt"
-						:author="post.author"
-						:image="post.image"
-						:tags="post.tags"
-						:url="post.url"
-						:date="new Date(post.published_at)"
-						:index="post.index">
-					</post>
-				</template>
-			</div>
-
-			<div class="post-column full-column" v-if="tablet">
+			<div class="post-column full-column">
 				<template v-for="post in posts">
 						<post
 							v-if="post"
@@ -68,7 +34,6 @@
 <script>
 	import excerpt from "../js/excerpt.js";
 	import resolveUrl from "../js/resolve-url.js";
-	import fitvids from "fitvids";
 
 	import Pagination from "./Pagination.vue";
 	import Post from "./Post.vue";
@@ -111,61 +76,10 @@
 		},*/
 
 		mounted(){
-			fitvids(".post-content");
 			this.nextPage();
-
-			window.addEventListener('resize', () => {
-				this.recalculateTablet();
-			});
-
-			this.recalculateTablet();
 		},
 
 		methods: {
-			recalculateTablet(){
-				this.tablet = window.innerWidth <= 900;
-			},
-
-			recalculate(){
-				let leftHeight = 0;
-				let rightHeight = 0;
-
-				const newLeft = this.previousLeft.slice();
-				const newRight = this.previousRight.slice();
-				this.posts.forEach((v) => {
-					const height = this.calculatePostHeight(v);
-					if(newLeft.find((_v) => _v.id === v.id)){
-						leftHeight += height;
-					}else if(newRight.find((_v) => _v.id === v.id)){
-						rightHeight += height;
-					}else{
-						if(leftHeight > rightHeight){
-							newRight.push(v);
-							rightHeight += height;
-						}else{
-							newLeft.push(v);
-							leftHeight += height;
-						}
-					}
-				});
-
-				this.previousLeft = newLeft;
-				this.previousRight = newRight;
-			},
-
-			calculatePostHeight(post){
-				//Roughly calculating post height.
-				//Approximate height is okay
-				//because it is onlyused when classifing columns.
-
-				let height = 50;
-				if(post.image) height += 100;
-				height += Math.floor(post.title.length / (window.innerWidth / 8)) * 30;
-				height += post.excerpt.length * 30 / (window.innerWidth / 8);
-
-				return height;
-			},
-
 			nextPage(){
 				const query = {
 					limit: this.limit,
@@ -190,7 +104,6 @@
 
 						return v;
 					}));
-					this.recalculate();
 				});
 			}
 		}
